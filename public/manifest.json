@@ -1,0 +1,20 @@
+{
+    "name": "Cypress Story Recorder",
+    "description": "Extension to automate building tests for cypress.",
+    "manifest_version": 2,
+    "version": "1.0",
+    "version_name": "1.0",
+    "minimum_chrome_version": "10.0",
+    "icons": {
+        "16": "img/favicon16.png",
+        "32": "img/favicon32.png",
+        "48": "img/favicon48.png",
+        "128": "img/favicon128.png"
+    },
+    "devtools_page": "devtools.html",
+    "permissions": [
+        "activeTab",
+        "storage",
+        "tabs"
+    ]
+}
