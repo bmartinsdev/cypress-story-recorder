@@ -1,28 +1,19 @@
 <script lang="ts">
 	import Tailwind from "./lib/Tailwind.svelte";
 	import { onMount } from "svelte";
-	import DomScanner from "./util/DomScanner";
-	import Debugger from "./util/Debugger.svelte";
-	import logs from "./stores/Logger";
-
-	const devMode = true;
+	import bgEvent from "./stores/BackgroundEvent";
 
 	let ready = false;
-	const dom = new DomScanner();
 
 	onMount(() => {
 		ready = true;
-		logs.add("test");
 	});
 </script>
 
 <main>
 	{#if ready}
 		Svelte + typescript + tailwind boilerplate
-		<button on:click={() => logs.add("wtv")}>test</button>
-	{/if}
-	{#if devMode}
-		<Debugger />
+		<button on:click={() => bgEvent.log("wtv")}>test</button>
 	{/if}
 </main>
 

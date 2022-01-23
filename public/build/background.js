@@ -1,20 +1,17 @@
-const ports = {}
+(function () {
+    'use strict';
 
-chrome.runtime.onConnect.addListener(port => {
-    console.log(port);
-})
-
-function init() {
-    one.onMessage.addListener(lOne)
-    function lOne(message) {
-        if (message.event === 'log') {
-            // eslint-disable-next-line no-console
-            return console.log('tab ' + id, message.payload)
+    class EventHandler {
+        log(msg) {
+            console.log(msg);
         }
-        if (process.env.NODE_ENV !== 'production') {
-            // eslint-disable-next-line no-console
-            console.log('%cdevtools -> backend', 'color:#888;', message)
-        }
-        two.postMessage(message)
     }
-}
+
+    const eventHandler = new EventHandler();
+
+    // Listen to any messages from extension
+    chrome.runtime.onMessage.addListener(msg => {
+        if (eventHandler[msg.action]) eventHandler[msg.action](msg.context);
+    });
+
+})();

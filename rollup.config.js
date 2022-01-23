@@ -30,7 +30,7 @@ function serve() {
 	};
 }
 
-export default {
+export default [{
 	input: 'src/main.ts',
 	output: {
 		sourcemap: true,
@@ -80,4 +80,20 @@ export default {
 	watch: {
 		clearScreen: false
 	}
-};
+},
+{
+	input: 'src/external/background.ts',
+	output: {
+		format: 'iife',
+		name: 'background',
+		file: 'public/build/background.js'
+	}
+},
+{
+	input: 'src/external/devtools.ts',
+	output: {
+		format: 'iife',
+		name: 'devtools',
+		file: 'public/build/devtools.js'
+	}
+}];
