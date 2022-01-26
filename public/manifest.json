@@ -14,7 +14,12 @@
     "devtools_page": "devtools.html",
     "permissions": [
         "activeTab",
-        "storage"
+        "storage",
+        "scripting"
+    ],
+    "host_permissions": [
+        "http://*/*",
+        "https://*/*"
     ],
     "background": {
         "service_worker": "build/background.js"

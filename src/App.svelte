@@ -7,6 +7,7 @@
 
 	onMount(() => {
 		ready = true;
+		bgEvent.init();
 	});
 </script>
 

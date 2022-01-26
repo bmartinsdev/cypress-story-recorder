@@ -6,7 +6,8 @@
   "compilerOptions": {
     "types":[
       "babylonjs",
-      "chrome"
+      "chrome",
+      "browser"
     ]
   },
 }

@@ -87,7 +87,17 @@ export default [{
 		format: 'iife',
 		name: 'background',
 		file: 'public/build/background.js'
-	}
+	},
+	plugins: [
+		commonjs(),
+		typescript({
+			sourceMap: !production,
+			inlineSources: !production
+		}),
+		!production && serve(),
+		!production && livereload('public'),
+		production && terser()
+	]
 },
 {
 	input: 'src/external/devtools.ts',
@@ -95,5 +105,32 @@ export default [{
 		format: 'iife',
 		name: 'devtools',
 		file: 'public/build/devtools.js'
-	}
+	},
+	plugins: [
+		commonjs(),
+		typescript({
+			sourceMap: !production,
+			inlineSources: !production
+		}),
+		!production && serve(),
+		!production && livereload('public'),
+		production && terser()
+	]
+},
+{
+	input: 'src/external/content.ts',
+	output: {
+		format: 'iife',
+		name: 'content',
+		file: 'public/build/content.js'
+	},
+	plugins: [
+		commonjs(),
+		typescript({
+			sourceMap: !production,
+			inlineSources: !production
+		}),
+		!production && serve(),
+		production && terser()
+	]
 }];
