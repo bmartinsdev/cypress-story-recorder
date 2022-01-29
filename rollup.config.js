@@ -33,7 +33,7 @@ function serve() {
 export default [{
 	input: 'src/main.ts',
 	output: {
-		sourcemap: true,
+		sourcemap: !production,
 		format: 'iife',
 		name: 'app',
 		file: 'public/build/bundle.js'
@@ -94,8 +94,6 @@ export default [{
 			sourceMap: !production,
 			inlineSources: !production
 		}),
-		!production && serve(),
-		!production && livereload('public'),
 		production && terser()
 	]
 },
@@ -112,8 +110,6 @@ export default [{
 			sourceMap: !production,
 			inlineSources: !production
 		}),
-		!production && serve(),
-		!production && livereload('public'),
 		production && terser()
 	]
 },
@@ -130,7 +126,6 @@ export default [{
 			sourceMap: !production,
 			inlineSources: !production
 		}),
-		!production && serve(),
 		production && terser()
 	]
 }];
