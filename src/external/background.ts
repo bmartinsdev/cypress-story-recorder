@@ -1,22 +1,18 @@
 class EventHandler {
-    injected: boolean = false;
+    tabId: number;
 
     async init(tabId: number): Promise<void> {
-        if (this.injected) return;
-        console.log("injecting");
+        if (this.tabId) return;
+        this.tabId = tabId;
 
         chrome.scripting.executeScript({
-            target: { tabId },
+            target: { tabId: this.tabId },
             files: ['build/content.js']
         });
     }
 
     log(msg: string): void {
         console.log(msg);
-    }
-
-    private async handleEvent(event: Event): Promise<void> {
-        console.log(event);
     }
 }
 
